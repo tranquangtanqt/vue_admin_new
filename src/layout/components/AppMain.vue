@@ -11,6 +11,9 @@
 <script>
 export default {
   name: 'AppMain',
+  mounted(){
+    console.log("route: " + this.$route.path);
+  },
   computed: {
     cachedViews() {
       return this.$store.state.tagsView.cachedViews

@@ -54,6 +54,9 @@ export default {
     this.onlyOneChild = null
     return {}
   },
+  mounted(){
+    console.log("Side item index.vue");
+  },
   methods: {
     hasOneShowingChild(children = [], parent) {
       const showingChildren = children.filter(item => {
