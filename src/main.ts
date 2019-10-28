@@ -14,7 +14,7 @@ import '@/styles/index.scss' // global css
 import './icons' // icon
 // import './permission' // permission control
 import './utils/error-log' // error log
-
+import * as filters from './filters' // global filters
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -31,6 +31,10 @@ import './utils/error-log' // error log
 Vue.use(Element, {
     size: Cookies.get('size') || 'medium' // set element-ui default size
   })
+  // register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false;
 

@@ -54,7 +54,7 @@ export default {
     this.onlyOneChild = null
     return {}
   },
-  mounted(){
+  created(){
     console.log("Side item index.vue");
   },
   methods: {

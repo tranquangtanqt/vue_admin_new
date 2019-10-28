@@ -3,9 +3,7 @@
     <div class=" clearfix">
       <pan-thumb :image="avatar" style="float: left">
         Your roles:
-        <span v-for="item in roles" :key="item" class="pan-info-roles">{{
-          item
-        }}</span>
+        <span class="pan-info-roles">{{ roles }}</span>
       </pan-thumb>
       <github-corner
         style="position: absolute; top: 0px; border: 0; right: 0;"
@@ -38,7 +36,7 @@ export default {
     };
   },
   mounted() {
-    console.log("roles: " + this.roles);
+    //console.log("roles: " + this.roles);
   },
   computed: {
     ...mapGetters(["name", "avatar", "roles"])
