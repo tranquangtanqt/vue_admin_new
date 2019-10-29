@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import getters from './getters'
+import Vue from "vue";
+import Vuex from "vuex";
+import getters from "./getters";
 
 Vue.use(Vuex)
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles = require.context('./modules', true, /\.js$/)
+const modulesFiles = require.context("./modules", true, /\.js$/)
 
 // you do not need `import app from './modules/app'`
 // it will auto require all vuex module from modules file
@@ -22,4 +22,4 @@ const store = new Vuex.Store({
   getters
 })
 
-export default store
+export default store;

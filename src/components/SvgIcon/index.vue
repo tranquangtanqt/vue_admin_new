@@ -21,9 +21,6 @@ export default {
       default: ''
     }
   },
-  mounted() {
-    console.log("aaaa");
-  },
   computed: {
     isExternal() {
       return isExternal(this.iconClass)

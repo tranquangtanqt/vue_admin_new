@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar-element">
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
@@ -47,12 +47,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+import Breadcrumb from './Breadcrumb.vue'
+import Hamburger from './Hamburger.vue'
 import ErrorLog from '@/components/ErrorLog'
-import Screenfull from '@/components/Screenfull'
-import SizeSelect from '@/components/SizeSelect'
-import Search from '@/components/HeaderSearch'
+import Screenfull from './Screenfull.vue'
+import SizeSelect from './SizeSelect.vue'
+import Search from './HeaderSearch.vue'
 
 export default {
   components: {
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar {
+.navbar-element {
   height: 50px;
   overflow: hidden;
   position: relative;
@@ -143,7 +143,7 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        // margin-top: 5px;
         position: relative;
 
         .user-avatar {

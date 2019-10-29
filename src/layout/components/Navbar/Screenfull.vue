@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import screenfull from 'screenfull'
+import screenfull from "screenfull"
 
 export default {
   name: 'Screenfull',
@@ -18,18 +18,18 @@ export default {
     this.init();
   },
   beforeDestroy() {
-    this.destroy()
+    this.destroy();
   },
   methods: {
     click() {
       if (!screenfull.isEnabled) {
         this.$message({
-          message: 'you browser can not work',
+          message: "you browser can not work",
           type: 'warning'
-        })
-        return false
+        });
+        return false;
       }
-      screenfull.toggle()
+      screenfull.toggle();
     },
     change() {
       this.isFullscreen = screenfull.isFullscreen
