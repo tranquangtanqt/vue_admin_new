@@ -26,7 +26,6 @@
     </el-tooltip>
 
     <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
-
     <div style="position:relative">
       <div class="tips">
         <span>Username : admin</span>
@@ -54,10 +53,9 @@
 </template>
 
 <script>
-import {
-  validUsername
-} from '@/utils/validate'
+import { validUsername } from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
+import { setToken } from "@/utils/auth"; // get token from cookie
 
 export default {
   name: 'Login',
@@ -67,9 +65,14 @@ export default {
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
+        callback(new Error('Please enter the correct format user name'))
       } else {
-        callback()
+        let valid_map = ["admin", "tantq"];
+        if(!(valid_map.indexOf(value.trim()) >= 0)){
+          callback(new Error('Please enter the user name is admin or tantq'))
+        } else {
+          callback()
+        }
       }
     }
     const validatePassword = (rule, value, callback) => {
@@ -79,9 +82,18 @@ export default {
         callback()
       }
     }
+
+    const tokens = {
+      admin: {
+        token: 'admin-token'
+      },
+      editor: {
+        token: 'tantq-token'
+      }
+    }
     return {
       loginForm: {
-        username: 'admin',
+        username: 'tantq',
         password: '111111'
       },
       loginRules: {
@@ -100,8 +112,7 @@ export default {
       capsTooltip: false,
       loading: false,
       showDialog: false,
-      redirect: undefined,
-      otherQuery: {}
+      redirect: undefined
     }
   },
   watch: {
@@ -110,14 +121,10 @@ export default {
         const query = route.query
         if (query) {
           this.redirect = query.redirect
-          this.otherQuery = this.getOtherQuery(query)
         }
       },
       immediate: true
     }
-  },
-  created() {
-    // window.addEventListener('storage', this.afterQRScan)
   },
   mounted() {
     if (this.loginForm.username === '') {
@@ -125,9 +132,6 @@ export default {
     } else if (this.loginForm.password === '') {
       this.$refs.password.focus()
     }
-  },
-  destroyed() {
-    // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
     checkCapslock({
@@ -158,31 +162,18 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true
-          this.$store.dispatch('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({
-                path: this.redirect || '/',
-                query: this.otherQuery
-              })
-              this.loading = false
-            })
-            .catch(() => {
-              this.loading = false
-            })
+          this.loading = true;
+           //Sau khi kiem tra login thi set token
+            setToken(this.loginForm.username);
+            this.$store.dispatch('user/login', this.loginForm)
+            
+            this.$router.push({ path: '/dashboard' });
+          this.loading = false;
         } else {
           console.log('error submit!!')
           return false
         }
       })
-    },
-    getOtherQuery(query) {
-      return Object.keys(query).reduce((acc, cur) => {
-        if (cur !== 'redirect') {
-          acc[cur] = query[cur]
-        }
-        return acc
-      }, {})
     }
   }
 }
@@ -230,10 +221,11 @@ $cursor: #fff;
     color: #454545;
   }
 }
+
 </style><style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$bg: #2d3a4b;
+$dark_gray: #889aa4;
+$light_gray: #eee;
 
 .login-container {
   min-height: 100%;
