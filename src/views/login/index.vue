@@ -164,11 +164,16 @@ export default {
         if (valid) {
           this.loading = true;
            //Sau khi kiem tra login thi set token
-            setToken(this.loginForm.username);
             this.$store.dispatch('user/login', this.loginForm)
-            
-            this.$router.push({ path: '/dashboard' });
-          this.loading = false;
+            .then(() => {
+              this.$router.push({
+                path: this.redirect || '/'
+              })
+              this.loading = false
+            })
+            .catch(() => {
+              this.loading = false
+            })
         } else {
           console.log('error submit!!')
           return false
