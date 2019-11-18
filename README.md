@@ -20,5 +20,12 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
+### Tham khảo
+See [Tham khảo](https://github.com/PanJiaChen/vue-element-admin/).
+
+### Document
+See [Document](https://panjiachen.github.io/vue-element-admin-site/#/).
+
+
+### Document
 See [Configuration Reference](https://cli.vuejs.org/config/).

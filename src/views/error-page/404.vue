@@ -8,13 +8,13 @@
         <img class="pic-404__child right" src="@/assets/404_images/404_cloud.png" alt="404">
       </div>
       <div class="bullshit">
-        <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__info">All rights reserved
-          <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
+        <div class="bullshit__oops">Lỗi! </div>
+        <div class="bullshit__info">Đã đăng ký bản quyền
+          <a style="color:#20a0ff" href="https://www.google.com/" target="_blank">google abc</a>
         </div>
         <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">Please check that the URL you entered is correct, or click the button below to return to the homepage.</div>
-        <a href="" class="bullshit__return-home">Back to home</a>
+        <div class="bullshit__info">Vui lòng kiểm tra xem URL bạn đã nhập có chính xác không, hoặc nhấp vào nút bên dưới để trở về trang chủ.</div>
+        <a href="" class="bullshit__return-home">Trở về trang chủ</a>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@
           <span class="pan-info-roles">{{ roles }}</span>
         </pan-thumb>
         <div style="position: absolute; top: 0px; border: 0; right: 0;">
-          <a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" class="github-corner" aria-label="View source on Github">
+          <a href="https://github.com/tranquangtanqt/vue_admin_new" target="_blank" class="github-corner" aria-label="View source on Github">
             <svg
               width="80"
               height="80"
